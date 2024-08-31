@@ -9,41 +9,44 @@ export default function WishlistProvider(props) {
     token: localStorage.getItem("userToken"),
   };
 
-  function addProductToWishlist(productId) {
-    return axios
-      .post(
-        `https://ecommerce.routemisr.com/api/v1/wishlist`,
-        {
-          productId: productId,
-        },
-        {
-          headers,
-        }
-      )
-      .then((res) => res)
-      .catch((error) => error);
+  async function addProductToWishlist(productId) {
+    try {
+      const res = await axios
+        .post(
+          `https://ecommerce.routemisr.com/api/v1/wishlist`,
+          {
+            productId: productId,
+          },
+          {
+            headers,
+          }
+        );
+      return res;
+    } catch (error) {
+      return error;
+    }
   }
 
-  function getLoggedUserWishlist() {
-    return axios
-      .get(`https://ecommerce.routemisr.com/api/v1/wishlist`, { headers })
-      .then((res) => {
-        //   setCartId(res.data.data._id);
-        //   setItemNumber(res.data.numOfCartItems);
-        // console.log(res);
+  async function getLoggedUserWishlist() {
+    try {
+      const res = await axios
+        .get(`https://ecommerce.routemisr.com/api/v1/wishlist`, { headers });
+      return res;
+    } catch (res_1) {
+      return res_1;
+    }
+  }
+
+    async function deleteWishlistItem(productId) {
+      try {
+        const res = await axios
+          .delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`, {
+            headers,
+          });
         return res;
-        // res;
-      })
-      .catch((res) => res);
-  }
-
-    function deleteWishlistItem(productId) {
-      return axios
-        .delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`, {
-          headers,
-        })
-        .then((res) => res)
-        .catch((res) => res);
+      } catch (res_1) {
+        return res_1;
+      }
     }
 
     // useEffect(() => {

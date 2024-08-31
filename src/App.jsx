@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import "./App.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
 import Brands from "./components/Brands/Brands";
 import Categories from "./components/Categories/Categories";
@@ -32,9 +32,9 @@ import Wishlist from './components/Wishlist/Wishlist';
 
 let query = new QueryClient();
 
-let myRouter = createBrowserRouter([
+let myRouter = createHashRouter([
   {
-    path: "",
+    path: "/",
     element: <Layout />,
     children: [
       {

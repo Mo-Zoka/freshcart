@@ -79,7 +79,7 @@ export default function Cart() {
           <i className="fas fa-spinner fa-spin text-4xl text-emerald-600 mb-5"></i>
           <p>Loading your cart...</p>
         </div>
-      ) : CartDetails?.products.length > 0 ? (
+      ) : CartDetails?.products?.length > 0 ? (
         <>
           {" "}
           <h2 className="text-center text-2xl text-emerald-600 font-bold mb-5">
